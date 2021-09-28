@@ -26,6 +26,7 @@ public class ScienceFrag extends Fragment {
     NewsAdapter adapter;
     private RecyclerView recyclerView;
     private String category = "science";
+    MainActivity mainActivity;
 
     @Nullable
     @Override
@@ -36,7 +37,25 @@ public class ScienceFrag extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new NewsAdapter(newsArrayList, getContext());
         recyclerView.setAdapter(adapter);
+        mainActivity = (MainActivity)getActivity();
         findNews();
+        final int state[] = new int[1];
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                state[0] = newState;
+            }
+
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(dy > 0 && (state[0] == 0 || state[0] == 2))
+                    mainActivity.mainToolbarLayout.setVisibility(View.GONE);
+                else if(dy < -10)
+                    mainActivity.mainToolbarLayout.setVisibility(View.VISIBLE);
+            }
+        });
         return v;
     }
     private void findNews() {

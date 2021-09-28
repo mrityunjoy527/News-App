@@ -1,7 +1,6 @@
 package com.example.news;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.browser.customtabs.CustomTabsIntent;
 import androidx.viewpager.widget.ViewPager;
 
 import android.icu.lang.UProperty;
@@ -11,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 
 import com.google.android.material.tabs.TabItem;
@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity{
     TabItem home, science, entertainment, health, tech, sports;
     PagerAdapter pagerAdapter;
     Toolbar toolbar;
+    RelativeLayout mainToolbarLayout;
     String api = "4c8302b0206c4622958173747d10e660";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity{
         setContentView(R.layout.activity_main);
 
         toolbar = findViewById(R.id.toolbar);
+        mainToolbarLayout = findViewById(R.id.main_toolbar_layout);
         setSupportActionBar(toolbar);
         home = findViewById(R.id.home);
         sports = findViewById(R.id.sports);

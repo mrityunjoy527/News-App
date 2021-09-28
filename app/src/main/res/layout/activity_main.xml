@@ -6,36 +6,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_marginTop="0dp"
-        android:background="@color/white"
-        android:id="@+id/toolbar">
+        android:layout_height="wrap_content"
+        android:id="@+id/main_toolbar_layout">
 
-        <RelativeLayout
+        <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical">
+            android:layout_height="?attr/actionBarSize"
+            android:layout_marginTop="0dp"
+            android:background="@color/white"
+            android:id="@+id/toolbar">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="News Fresh"
-                android:textStyle="bold"
-                android:textSize="28dp"
-                android:textColor="#29B6F6">
-            </TextView>
-        </RelativeLayout>
-    </androidx.appcompat.widget.Toolbar>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="News Fresh"
+                    android:textStyle="bold"
+                    android:textSize="28dp"
+                    android:textColor="#29B6F6">
+                </TextView>
+        </androidx.appcompat.widget.Toolbar>
+    </RelativeLayout>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/include"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:layout_below="@id/toolbar"
+        android:layout_below="@id/main_toolbar_layout"
         android:layout_marginTop="-2dp"
-
         app:tabIndicatorColor="#29B6F6"
         android:background="@color/white"
         app:tabIndicatorHeight="3.5dp"
