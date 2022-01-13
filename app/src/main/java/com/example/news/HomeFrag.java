@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,11 +28,13 @@ public class HomeFrag extends Fragment {
     NewsAdapter adapter;
     private RecyclerView recyclerView;
     MainActivity mainActivity;
-
+    ProgressBar progressBar;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.homefrag, null);
+        progressBar = v.findViewById(R.id.progressHome);
+        progressBar.setVisibility(View.VISIBLE);
         recyclerView = v.findViewById(R.id.recyclerViewOfHome);
         newsArrayList = new ArrayList<>();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -65,10 +69,13 @@ public class HomeFrag extends Fragment {
             public void onResponse(Call<FetchNews> call, Response<FetchNews> response) {
                 newsArrayList.addAll(response.body().getArticles());
                 adapter.notifyDataSetChanged();
+                progressBar.setVisibility(View.GONE);
             }
 
             @Override
             public void onFailure(Call<FetchNews> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                Toasty.error(getContext(), "Something Went Wrong", Toasty.LENGTH_SHORT).show();
             }
         });
     }

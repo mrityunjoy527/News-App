@@ -20,9 +20,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Specific News"
+                android:text="@string/specific_news"
                 android:textStyle="bold"
-                android:textSize="28dp"
+                android:textSize="28sp"
                 android:textColor="#29B6F6">
             </TextView>
         </RelativeLayout>
@@ -33,4 +33,11 @@
         android:layout_height="match_parent"
         android:id="@+id/webView"
         android:layout_below="@id/toolbar"/>
+
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/progressWeb"
+        android:visibility="invisible"/>
 </RelativeLayout>

@@ -10,4 +10,12 @@
         android:layout_margin="2dp"
         android:padding="2dp"/>
 
+    <ProgressBar
+        android:id="@+id/progressSci"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_centerVertical="true"/>
+
 </RelativeLayout>

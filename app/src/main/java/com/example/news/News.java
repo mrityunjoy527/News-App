@@ -1,5 +1,8 @@
 package com.example.news;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class News {
     private String urlToImage, title, author, url, publishedAt;
 
@@ -44,6 +47,9 @@ public class News {
     }
 
     public String getPublishedAt() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat format = new SimpleDateFormat("EEE, MMM d, ''yy");
+        publishedAt = format.format(calendar.getTime());
         return publishedAt;
     }
 

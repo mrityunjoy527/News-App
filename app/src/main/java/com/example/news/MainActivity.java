@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 
